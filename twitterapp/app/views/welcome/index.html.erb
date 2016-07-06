@@ -1,0 +1,30 @@
+<h1>Sake Dashboard</h1>
+
+<!-- <p><%= @tweets %></p> -->
+<!-- <p><%= @times %></p>
+<p><%= @labels %></p>
+<%= @show_counts %> -->
+<div class="col-md-8">
+  <h2>Where are people talking sake?</h2>
+  <%= pie_chart @data %>
+
+  <h2>What pictures are people posting about sake?</h2>
+  <% @tweets.each do |t| %>
+    <%= image_tag(t["entities"]["media"][0]["media_url"], height: '200') rescue nil %>
+  <% end %>
+</div>
+
+<div class="col-md-4">
+  <h2>What are people saying?</h2>
+  <ul>
+  <% @tweets.each do |t|%>
+  <li>
+    <p><%= t["text"] %> Favorited count: <%= t["favorite_count"] %></p>
+    <p>
+      <a href="<%= t["user"]["url"] %>"><b><%= t["user"]["name"] %></a> - Created at <%= t["created_at"] %></b>
+    </p>
+    <hr>
+  </li>
+  <% end %>
+</ul>
+</div>
