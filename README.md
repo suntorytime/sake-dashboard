@@ -19,7 +19,7 @@ Visit https://shrouded-atoll-76420.herokuapp.com
 At root directory, run "rspec" from command line
 
 ## Side notes
-Environment variables/file not uploaded to Github, so app will not run unless those are applied.
+Environment variables/file not uploaded to Github, so app will not run unless those are applied. Likewise, test suite will not run unless environment variables applied.
 
 ## Screenshots
 ![alt tag](screenshot.png)
