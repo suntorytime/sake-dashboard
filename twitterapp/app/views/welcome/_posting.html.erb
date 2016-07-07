@@ -1,0 +1,4 @@
+<h2>What pictures are people posting about sake?</h2>
+  <% @tweets.each do |t| %>
+    <%= image_tag(t["entities"]["media"][0]["media_url"], height: '200') rescue nil %>
+  <% end %>
