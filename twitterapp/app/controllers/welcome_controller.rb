@@ -74,18 +74,22 @@ class WelcomeController < ApplicationController
               "#FF6384",
               "#36A2EB",
               "#FFCE56",
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56",
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56"
+              "#FF194A",
+              "#00B21D",
+              "#00FF2A",
+              "#FF9163",
+              "#00B299",
+              "#DD00FF"
             ],
             hoverBackgroundColor: [
               "#FF6384",
               "#36A2EB",
               "#FFCE56",
-              "#FF6384"
+              "#DD00FF",
+              "#00B299",
+              "#FF9163",
+              "#FF194A",
+              "#00B21D"
             ]
         }]
       };
