@@ -41,7 +41,7 @@ class WelcomeController < ApplicationController
     # Check if response went through OK, then proceed with process
     if response.code == '200' then
 
-      # initialize chart-related data
+      # initialize chart-related arrays for operations
       chart_time_zones = []
       chart_labels = []
       chart_data = []
@@ -54,13 +54,13 @@ class WelcomeController < ApplicationController
         chart_time_zones << t["user"]["time_zone"] unless t["user"]["time_zone"] == nil
       end
 
-      # find the unique instances of tweet time zones
+      # find the unique instances of tweets' time zones and assign to chart_labels
       chart_labels = chart_time_zones.uniq
 
       # count up the number of instances of tweets with respect to time zones
       hash_of_time_zones = chart_time_zones.each_with_object(Hash.new(0)) { |word,chart_data| chart_data[word] += 1 }
 
-      # assign counts of each time zone to an array for chartjs usage
+      # assign counts of each time zone to an array 'chart_data' for chartjs usage
       hash_of_time_zones.each do |key, count|
         chart_data << count
       end

@@ -38,14 +38,12 @@ describe WelcomeController do
     end
   end
 
-  describe 'Fetch Twitter API response' do
-    it 'returns a 200 error code' do
+  describe 'Query Twitter API' do
+    it 'returns a 200 response code' do
       fetch_twitter
-      # expect(@response).to be_an_instance_of(Hash)
       expect(@response.code).to eq("200")
-
     end
-    it 'returns an array of objects' do
+    it 'returns an array of Twitter objects' do
       fetch_twitter
       timeline = JSON.parse(@response.body)
       @tweets = timeline["statuses"]

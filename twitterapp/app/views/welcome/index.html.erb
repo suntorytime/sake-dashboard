@@ -3,9 +3,11 @@
 <div class="col-md-8">
   <h2>Where are people talking sake?</h2>
   <%= pie_chart @chart_data %>
+  <!-- Displays sake-related pictures from Twitter -->
   <%= render 'posting' %>
 </div>
 
+<!-- Displays sake-related tweets from Twitter -->
 <div class="col-md-4">
   <%= render 'saying'%>
 </div>
