@@ -4,6 +4,12 @@ class WelcomeController < ApplicationController
 
   def index
     expires_in 2.minute, public: true
+    request_twitter
+    end
+  end
+
+  private
+  def request_twitter
     consumer_key = OAuth::Consumer.new(
         ENV["CONSUMER_KEY"],
         ENV["CONSUMER_SECRET"])
@@ -16,6 +22,7 @@ class WelcomeController < ApplicationController
 
     # The verify credentials endpoint returns a 200 status if
     # the request is signed correctly.
+    # Uses environment variable to enter the rest of the address
     address = URI("#{baseurl}/#{ENV["SAKE_URL"]}")
 
     # Set up Net::HTTP to use SSL, which is required by Twitter.
@@ -31,46 +38,56 @@ class WelcomeController < ApplicationController
     http.start
     response = http.request request
 
+    # Check if response went through OK, then proceed with process
     if response.code == '200' then
+
+      # initialize chart-related data
+      chart_time_zones = []
+      chart_labels = []
+      chart_data = []
+
       timeline = JSON.parse(response.body)
       @tweets = timeline["statuses"]
 
-      times = []
-      labels = []
-      counts = []
+      # add time zones from tweets to array
       @tweets.each do |t|
-        times << t["user"]["time_zone"] unless t["user"]["time_zone"] == nil
+        chart_time_zones << t["user"]["time_zone"] unless t["user"]["time_zone"] == nil
       end
-      labels = times.uniq
-      hash_of_time_zones = times.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
 
+      # find the unique instances of tweet time zones
+      chart_labels = chart_time_zones.uniq
+
+      # count up the number of instances of tweets with respect to time zones
+      hash_of_time_zones = chart_time_zones.each_with_object(Hash.new(0)) { |word,chart_data| chart_data[word] += 1 }
+
+      # assign counts of each time zone to an array for chartjs usage
       hash_of_time_zones.each do |key, count|
-        counts << count
+        chart_data << count
       end
-      @data = {
-    labels: labels,
-    datasets: [
-        {
-            data: counts,
+
+      # Assign chart data and send to instance variable
+      @chart_data = {
+        labels: chart_labels,
+        datasets: [{
+            data: chart_data,
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56"
             ],
             hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#FF6384"
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#FF6384"
             ]
         }]
-};
-    end
+      };
   end
 end

@@ -1,9 +1,8 @@
-
-  <h2>What are people saying?</h2>
-  <ul>
+<h2>What are people saying?</h2>
+<ul>
   <% @tweets.each do |t|%>
   <li>
-    <p><%= t["text"] %> Favorited: <%= t["favorite_count"] %></p>
+    <p><%= t["text"] %> Favorited: <%= t["favorite_count"] %>  times</p>
     <p>
       <a href="<%= t["user"]["url"] %>"><b><%= t["user"]["name"] %></a> - Created at <%= t["created_at"] %></b>
     </p>
