@@ -1,7 +1,7 @@
-== Japanese Sake Dashboard
+# Japanese Sake Dashboard
 
 ## About
-The Japanese Sake Dashboard automatically fetches Japanese sake-related tweets and data from Twitter. It then displays the information in via a timeline and chart.
+The Japanese Sake Dashboard automatically fetches Japanese sake-related tweets and data from Twitter. It then displays the information via a timeline and chart.
 
 ## Technologies
 * Rails
@@ -11,8 +11,6 @@ The Japanese Sake Dashboard automatically fetches Japanese sake-related tweets a
 * rSpec
 * Bootstrap
 * Ruby 2.2.1
-
-## How to run Japanese Sake Dashboard
 
 
 ## How to run the test suite
