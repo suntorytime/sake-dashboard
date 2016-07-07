@@ -12,9 +12,14 @@ The Japanese Sake Dashboard automatically fetches Japanese sake-related tweets a
 * Bootstrap
 * Ruby 2.2.1
 
+## How to run app
+Visit https://shrouded-atoll-76420.herokuapp.com
 
 ## How to run the test suite
-At directory "twitter-project/twitterapp", run "rspec"
+At root directory, run "rspec" from command line
+
+## Side notes
+Environment variables/file not uploaded to Github, so app will not run unless those are applied.
 
 ## Screenshots
 ![alt tag](screenshot.png)
