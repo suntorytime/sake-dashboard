@@ -1,28 +1,22 @@
-== README
+== Japanese Sake Dashboard
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
+The Japanese Sake Dashboard automatically fetches Japanese sake-related tweets and data from Twitter. It then displays the information in via a timeline and chart.
 
-Things you may want to cover:
+## Technologies
+* Rails
+* ChartJS
+* Oauth
+* Twitter API
+* rSpec
+* Bootstrap
+* Ruby 2.2.1
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run Japanese Sake Dashboard
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## How to run the test suite
+At directory "twitter-project/twitterapp", run "rspec"
+
+## Screenshots
+![alt tag](screenshot.png)
