@@ -3,6 +3,7 @@ require 'oauth'
 class WelcomeController < ApplicationController
 
   def index
+    expires_in 2.minute, public: true
     consumer_key = OAuth::Consumer.new(
         ENV["CONSUMER_KEY"],
         ENV["CONSUMER_SECRET"])
@@ -30,7 +31,6 @@ class WelcomeController < ApplicationController
     http.start
     response = http.request request
 
-    tweets = nil
     if response.code == '200' then
       timeline = JSON.parse(response.body)
       @tweets = timeline["statuses"]

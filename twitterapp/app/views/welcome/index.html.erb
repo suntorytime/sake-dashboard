@@ -1,5 +1,5 @@
 <h1>Sake Dashboard</h1>
-
+<%= @hello %>
 <!-- <p><%= @tweets %></p> -->
 <!-- <p><%= @times %></p>
 <p><%= @labels %></p>
@@ -19,7 +19,7 @@
   <ul>
   <% @tweets.each do |t|%>
   <li>
-    <p><%= t["text"] %> Favorited count: <%= t["favorite_count"] %></p>
+    <p><%= t["text"] %> Favorited: <%= t["favorite_count"] %></p>
     <p>
       <a href="<%= t["user"]["url"] %>"><b><%= t["user"]["name"] %></a> - Created at <%= t["created_at"] %></b>
     </p>
